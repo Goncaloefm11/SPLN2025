@@ -1,0 +1,56 @@
+=====================================================
+    GUIA COMPLETO: UNIX FILTERS AS TOOLKIT
+=====================================================
+
+1. VISUALIZAÇÃO E ESTRUTURA
+-----------------------------------------------------
+• head: Imprime linhas no início de um ou mais ficheiros.
+  Exemplo: head -n 5 file.txt (mostra as primeiras 5 linhas)
+• tail: Imprime linhas no final de um ou mais ficheiros.
+  Exemplo: tail -n 5 file.txt (mostra as últimas 5 linhas)
+• cat:  Concatena ficheiros e imprime para o stdout.
+  Exemplo: cat file.txt (lê o ficheiro todo)
+• tac:  Concatena e imprime para o stdout de forma inversa.
+  Exemplo: tac file.txt (lê de baixo para cima)
+• nl:   Numera linhas.
+  Exemplo: nl file.txt
+
+2. EDIÇÃO E TRANSFORMAÇÃO
+-----------------------------------------------------
+• cut:   Remove ou isola secções de cada linha.
+  Exemplo: cut -d' ' -f1 file.txt (extrai a primeira coluna/palavra)
+           cut -c 1-3 file.txt (dá os primeiros 3 caracteres de cada linha)
+• tr:    Translate or delete caracteres (substitui ou apaga).
+  Exemplo: tr 'a-z' 'A-Z' < file.txt (converte para maiúsculas)
+• sed:   Search, replace and delete (editor de fluxo).
+  Exemplo: sed 's/velho/novo/g' file.txt (substitui palavras)
+           sed '3d' file.txt (apaga a linha 3)
+           sed -n '1,2p' file.txt (imprime a linha 1 e 2)
+
+• awk:   Pattern scanning and processing language.
+  Exemplo: awk '{print $1, $3}' file.txt (imprime a coluna 1 e 3)
+• paste: Une linhas de ficheiros lado a lado.
+  Exemplo: paste file1.txt file2.txt
+
+3. FILTROS E ORGANIZAÇÃO
+-----------------------------------------------------
+• grep: Filtra por padrão (procura texto).
+  Exemplo: grep "termo" file.txt
+• sort: Ordena linhas.
+  Exemplo: sort file.txt (ordem alfabética)
+• uniq: Mostra linhas repetidas.
+  Exemplo: sort file.txt | uniq -c (conta duplicados)
+
+4. UTILIDADES E ESTATÍSTICA
+-----------------------------------------------------
+• wc:    Conta linhas, palavras e caracteres.
+  Exemplo: wc -l file.txt (conta o número de linhas)
+• tee:   Read from standard input and write to stdout and files.
+  Exemplo: ls | tee log.txt (mostra no ecrã e grava no ficheiro)
+
+=====================================================
+DICA: Usa o símbolo "|" (pipe) para ligar estes comandos.
+Exemplo: cat file.txt | grep "erro" | wc -l (mostra a quantidade de vezes que repete a palavra)
+=====================================================
+
+
