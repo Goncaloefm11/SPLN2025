@@ -1,0 +1,114 @@
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\title{Análise Linguística: harry.txt}
+\author{Gonçalo Magalhães}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Frases mais relevantes extraídas através do modelo n-grams:
+\begin{itemize}
+\item A casa dos Dursley tinha quatro quartos: um para tio Válter e tia Petúnia, um para hóspedes (em geral a irmã de tio Válter, Guida), um onde Duda dormia e um onde Duda guardava todos os brinquedos e pertences que não cabiam no primeiro quarto.
+\item Passara a vida dominado por Duda e infernizado pela tia Petúnia e pelo tio Válter; se era realmente um bruxo, por que eles não tinham se transformado em sapos toda vez que tentaram prendê-lo no armário?
+\item Enquanto tio Válter dava telefonemas furiosos para o correio e a leiteria tentando encontrar alguém a quem se queixar, tia Petúnia picava as cartas no processador de alimentos. – Mas quem é que quer falar tanto assim com você ?
+\end{itemize}
+\end{abstract}
+
+\section{Entidades Nomeadas (NER)}
+\begin{itemize}
+\item \textbf{MISC}: Visite pottermore.com  Para Jessica
+\item \textbf{LOC}: Alfeneiros
+\item \textbf{MISC}: Harry Potter characters
+\item \textbf{MISC}: CAPÍTULO CINCO
+\item \textbf{PER}: Continue
+\item \textbf{ORG}: TRÊS
+\item \textbf{MISC}: Sra. Potter
+\item \textbf{PER}: Editora Rocco Ltda
+\item \textbf{PER}: Pottermore Limited
+\item \textbf{ORG}: DEZESSETE
+\item \textbf{LOC}: QUATRO
+\item \textbf{MISC}: Harry... 
+\item \textbf{MISC}: Harry
+\item \textbf{MISC}: Harry Potter
+\item \textbf{PER}: Eduardo
+\item \textbf{MISC}: Potter
+\item \textbf{MISC}: Alfeneiros
+\item \textbf{PER}: Sr. Dursley
+\item \textbf{MISC}: Le Livros
+\item \textbf{ORG}: SETE
+\item \textbf{ORG}: DOZE
+\item \textbf{ORG}: CATORZE
+\item \textbf{LOC}: NOVE
+\item \textbf{PER}: Potter
+\item \textbf{PER}: Biz
+\item \textbf{MISC}: OITO
+\item \textbf{PER}: Duda
+\item \textbf{MISC}: ONZE
+\item \textbf{ORG}: Editora Rocco Ltda
+\item \textbf{PER}: J.K. Rowling
+\item \textbf{ORG}: DEZESSEIS
+\item \textbf{LOC}: Sr.
+\item \textbf{MISC}: Direitos Reservados ©
+\item \textbf{MISC}: Conteúdo
+\item \textbf{ORG}: DOIS
+\item \textbf{PER}: Sr. Dursley
+\item \textbf{ORG}: Grunnings
+\item \textbf{LOC}: Dursley
+\item \textbf{PER}: Lia Wyler 
+\item \textbf{ORG}: Warner Bros
+\item \textbf{MISC}: Título Original: Harry Potter and the Philosopher’s Stone 
+\item \textbf{ORG}: TREZE
+\item \textbf{LOC}: Desculpe
+\item \textbf{ORG}: Ilustrações
+\item \textbf{LOC}: Sra. Dursley
+\item \textbf{PER}: Direitos Autorais ©
+\item \textbf{PER}: Baixelivros.org
+\item \textbf{ORG}: Le Livros
+\item \textbf{PER}: Anne
+\item \textbf{PER}: Dudley
+\item \textbf{MISC}: QUINZE
+\item \textbf{PER}: Ernesto
+\item \textbf{PER}: Mary GrandPré ©
+\item \textbf{PER}: Di
+\item \textbf{PER}: Dursley
+\item \textbf{LOC}: Pestinha
+\item \textbf{LOC}: Brasil
+\item \textbf{MISC}: DADOS DE COPYRIGHT Sobre
+\item \textbf{MISC}: LeLivros
+\item \textbf{PER}: Esquecera
+\end{itemize}
+\clearpage
+
+\section{Análise de Padrões Gramaticais}
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{8cm}|}
+\hline
+\textbf{Tipo de Padrão} & \textbf{Trecho Extraído} \\ \hline
+ACAO & Dursley tinha \\ \hline
+OBJETO & Duda dormia \\ \hline
+ACAO & Duda guardava \\ \hline
+MOVIMENTO & transformado em sapos \\ \hline
+MOVIMENTO & prendê-lo no armário \\ \hline
+ACAO & Válter dava \\ \hline
+ACAO & Petúnia picava \\ \hline
+OBJETO & picava as cartas \\ \hline
+
+\end{tabular}
+\end{table}
+
+\clearpage
+
+\begin{thebibliography}{9}
+\bibitem{fonte} Autor Desconhecido, \textit{harry.txt}, Edição Digital.
+\end{thebibliography}
+
+\end{document}

@@ -21,11 +21,14 @@ artigo.
 
 ## Estrutura relevante
 
-- `TP1/scr/tokeniz.py` — script principal que orquestra o processamento: lê os ficheiros de texto, extrai as 3 frases mais relevantes (via `paragrafos.py`), executa NER e Matcher, e chama o gerador LaTeX.
+- `TP1/scr/run_all.py` — **script de orquestração** que executa todo o pipeline automaticamente: gera os `.tex` e compila para PDF.
+- `TP1/scr/tokeniz.py` — script principal que processa o texto: lê os ficheiros, extrai as 3 frases mais relevantes (via `paragrafos.py`), executa NER e Matcher, e chama o gerador LaTeX.
 - `TP1/scr/paragrafos.py` — lógica de scoring: limpeza básica, construção de bigramas e pontuação para selecionar as 3 melhores.
 - `TP1/scr/gera_latex.py` — monta e escreve os ficheiros `.tex` com o título, abstract (as frases), secção NER e tabela de matches.
-- `TP1/scr/*.txt` — ficheiros de origem (`harry.txt`, `submarino.txt`, `palhaco.txt`), tendo estes ficheiros ter de ser escritos dentro da lista presente no `tokeniz.py` -> (`livros = ['harry.txt', 'submarino.txt', 'palhaco.txt']`).
-- `TP1/scr/artigo_NOME_DO_LIVRO.pdf` — PDFs gerados a partir dos `.tex` (quando compilados).
+- `TP1/scr/web_extractor.py` — extrai texto de páginas web (para as fontes online).
+- `TP1/scr/*.txt` — ficheiros de origem (`harry.txt`), sendo este ficheiro listado em `tokeniz.py` -> (`fontes = ['harry.txt', 'https://pt.wikipedia.org/wiki/J._K._Rowling', '...']`).
+- `TP1/scr/artigo_*.tex` — ficheiros LaTeX gerados automaticamente.
+- `TP1/scr/artigo_*.pdf` — PDFs gerados a partir dos `.tex` (compilados automaticamente).
 - `TP1/spln26tp1.pdf` — PDF do trabalho
 
 ---
@@ -37,53 +40,80 @@ artigo.
 pip install -U pip
 pip install spacy
 
+
 # instalar o modelo pt
 python -m spacy download pt_core_news_sm
-pdftotext livros.pdf 
 ```
-
-Observação: Deverá fazer previamente a conversão do pdf em questao para a extensão .txt como mostra em baixo:
-
-```zsh
-pdftotext harry.pdf
-pdftotext submarino.pdf
-pdftotext palhaco.pdf  
-```
-
----
 
 ## Como executar o pipeline
+### Opção 1:
 
-Execute o processamento (script principal):
+Execute o script que faz tudo automaticamente:
 
 ```zsh
-python3 tokeniz.py
+cd TP1/scr
+# passar o pdf para .text primeiramente
+pdftotext harry.pdf
+
+# executar o script
+python3 run_all.py
 ```
 
 Isto vai:
-- abrir cada ficheiro de texto listado em `tokeniz.py` (`harry.txt`, `submarino.txt`, `palhaco.txt`),
-- extrair as 3 frases mais relevantes,
-- executar o spaCy NER e o Matcher com os padrões definidos em `tokeniz.py`,
-- gerar um ficheiro `.tex` por fonte usando `gera_latex.py`.
+- executar `tokeniz.py` para processar todas as fontes,
+- gerar automaticamente os 3 ficheiros `.tex`,
+- compilar cada `.tex` para PDF usando `pdflatex`,
+- remover ficheiros temporários,
+- mostrar um resumo final com os PDFs gerados.
+
+### Opção 2: Manual
+
+Se preferires executar passo a passo:
+
+```zsh
+# 1. Executar o processamento
+python3 tokeniz.py
+
+# 2. Compilar cada .tex para PDF
+pdflatex artigo_harry.txt.tex
+pdflatex artigo_pt_wikipedia_org_wiki_J__K__Rowling.tex
+pdflatex artigo_pt_wikipedia_org_wiki_Literatura_fant_C3_A1stica.tex
+```
 
 ---
 
 ## Saída esperada
 
-- Para cada ficheiro de entrada é gerado `artigo_<nome>.tex`.
-- O `.tex` contém:
+Após executar `python3 run_all.py`, serão gerados:
+
+- **3 ficheiros `.tex`** com o conteúdo:
   - Título, autor e data;
   - Abstract com as 3 frases selecionadas;
   - Secção de Entidades Nomeadas (NER);
   - Secção com uma tabela contendo os matches do spaCy Matcher;
-  - Bibliografia (entrada simples com a referência do ficheiro de origem).
+  - Bibliografia (com referência da fonte).
 
-```zsh
-pdflatex artigo_harry.tex
-pdflatex artigo_submarinoy.tex
-pdflatex artigo_palhaco.tex
+- **3 ficheiros `.pdf`** compilados automaticamente, prontos para visualizar.
+
+Exemplo de output do script:
 ```
-Será então criado um pdf para esse ficheiro latex de entrada que mostrará a saida esperada mencionada em cima.
+
+tokeniz.py executado com sucesso!
+
+3 ficheiros .tex encontrados:
+   - artigo_harry.txt.tex
+   - artigo_pt_wikipedia_org_wiki_J__K__Rowling.tex
+   - artigo_pt_wikipedia_org_wiki_Literatura_fant_C3_A1stica.tex
+
+Ficheiros .tex gerados: 3
+Ficheiros compilados com sucesso: 3
+
+Todos os ficheiros foram processados com sucesso!
+   PDFs gerados:
+   - artigo_harry.txt.pdf
+   - artigo_pt_wikipedia_org_wiki_J__K__Rowling.pdf
+   - artigo_pt_wikipedia_org_wiki_Literatura_fant_C3_A1stica.pdf
+```
 
 ---
 
