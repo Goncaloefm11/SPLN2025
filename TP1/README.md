@@ -21,15 +21,15 @@ artigo.
 
 ## Estrutura relevante
 
-- `TP1/scr/run_all.py` — **script de orquestração** que executa todo o pipeline automaticamente: gera os `.tex` e compila para PDF.
-- `TP1/scr/tokeniz.py` — script principal que processa o texto: lê os ficheiros, extrai as 3 frases mais relevantes (via `paragrafos.py`), executa NER e Matcher, e chama o gerador LaTeX.
-- `TP1/scr/paragrafos.py` — lógica de scoring: limpeza básica, construção de bigramas e pontuação para selecionar as 3 melhores.
-- `TP1/scr/gera_latex.py` — monta e escreve os ficheiros `.tex` com o título, abstract (as frases), secção NER e tabela de matches.
-- `TP1/scr/web_extractor.py` — extrai texto de páginas web (para as fontes online).
-- `TP1/scr/*.txt` — ficheiros de origem (`harry.txt`), sendo este ficheiro listado em `tokeniz.py` -> (`fontes = ['harry.txt', 'https://pt.wikipedia.org/wiki/J._K._Rowling', '...']`).
-- `TP1/scr/artigo_*.tex` — ficheiros LaTeX gerados automaticamente.
-- `TP1/scr/artigo_*.pdf` — PDFs gerados a partir dos `.tex` (compilados automaticamente).
-- `TP1/spln26tp1.pdf` — PDF do trabalho
+- `TP1/run_all.py` — **script de orquestração** que executa todo o pipeline automaticamente: gera os `.tex` e compila para PDF.
+- `TP1/tokeniz.py` — script principal que processa o texto: lê os ficheiros, extrai as 3 frases mais relevantes (via `paragrafos.py`), executa NER e Matcher, e chama o gerador LaTeX.
+- `TP1/paragrafos.py` — lógica de scoring: limpeza básica, construção de bigramas e pontuação para selecionar as 3 melhores.
+- `TP1/gera_latex.py` — monta e escreve os ficheiros `.tex` com o título, abstract (as frases), secção NER e tabela de matches.
+- `TP1/web_extractor.py` — extrai texto de páginas web (para as fontes online).
+- `TP1/*.txt` — ficheiros de origem (`harry.txt`), sendo este ficheiro listado em `tokeniz.py` -> (`fontes = ['harry.txt', 'https://pt.wikipedia.org/wiki/J._K._Rowling', '...']`).
+- `TP1/artigo_*.tex` — ficheiros LaTeX gerados automaticamente.
+- `TP1/artigo_*.pdf` — PDFs gerados a partir dos `.tex` (compilados automaticamente).
+- `TP1/trabalho/spln26tp1.pdf` — PDF do trabalho
 
 ---
 
