@@ -25,6 +25,20 @@ O treino foi concluído com sucesso após aproximadamente 2800 iterações, demo
 * `train.spacy` / `dev.spacy`: Datasets convertidos para o formato binário do spaCy.
 * `output/model-best`: Pasta contendo o modelo com a melhor performance durante o treino.
 
+## ⚠️ Nota sobre o Modelo (Output)
+Devido ao tamanho dos ficheiros binários gerados pelo treino (`model-best` e `model-last`), os mesmos não foram carregados diretamente para este repositório do GitHub para otimizar o espaço.
+
+No entanto, o modelo pode ser facilmente testado ou regenerado seguindo estes passos:
+1. Garanta que tem o ficheiro `config.cfg`, `train.spacy` e `dev.spacy` na pasta raiz.
+2. Execute o comando de treino mencionado acima.
+3. Após o treino, a pasta `output/` será criada localmente com os pesos do modelo.
+
+### Exemplo de Teste Local
+Uma vez gerado o modelo localmente, ele identifica entidades com a seguinte precisão:
+- **Pessoas:** "Gonçalo" -> PER
+- **Locais:** "Portugal" -> LOC
+- **Organizações:** "Universidade do Minho" -> ORG
+
 ## 🛠️ Como Utilizar o Modelo
 Para carregar e testar o modelo treinado:
 
